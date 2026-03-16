@@ -43,7 +43,7 @@ You can use the `.env.example` file as a template.
 ## 🧠 Key Technologies
 - **Express.js**: Web framework for Node.js.
 - **Mongoose**: MongoDB object modeling.
-- **@google/generative-ai**: Interface with Google Gemini models for quiz generation.
+- **@google/genai**: Interface with Google Gemini models for quiz generation.
 - **Multer**: Middleware for handling `multipart/form-data` (file uploads).
 - **pdf-parse**: Extracts text from PDF files.
 
