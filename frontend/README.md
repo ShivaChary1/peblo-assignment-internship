@@ -1,16 +1,45 @@
-# React + Vite
+# Peblo Frontend - Interactive Quiz UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React application built with Vite that provides an intuitive interface for students to take AI-generated quizzes and for teachers/admins to ingest PDF content.
 
-Currently, two official plugins are available:
+## 🚀 Local Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Install Dependencies
+```bash
+cd frontend
+npm install
+```
 
-## React Compiler
+### 2. Configure API URL
+By default, the frontend expects the backend to be running at `http://localhost:5000/api`. You can override this by creating a `.env` file in the `frontend/` directory:
+```env
+VITE_API_URL=http://your-backend-url/api
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. Start Development Server
+```bash
+npm run dev
+```
+The application will be available at `http://localhost:5173`.
 
-## Expanding the ESLint configuration
+## ✨ Key Features
+- **PDF Ingestion UI**: Upload academic PDFs and trigger AI quiz generation.
+- **Adaptive Quiz Interface**: Smooth, animated quiz taking experience with Framer Motion.
+- **Real-time Feedback**: Get instant results after submitting answers.
+- **Responsive Design**: Built to work seamlessly on desktops and mobile devices.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+- **React 19**: Modern UI development.
+- **Vite**: Ultra-fast build tool and development server.
+- **Framer Motion**: High-performance animations and transitions.
+- **Axios**: Promised-based HTTP client for API requests.
+- **React Router 7**: Declarative routing for navigation.
+- **Lucide React**: Beautifully simple pixel-perfect icons.
+
+## 📁 Project Structure
+- `src/api/`: Service layers for backend communication (`ingestService`, `quizService`).
+- `src/components/`: Reusable UI components like buttons, inputs, and layout wrappers.
+- `src/pages/`: Main views (Home, Quiz, Ingest).
+- `src/assets/`: Static images and global styles.
+- `App.jsx`: Main application routing and entry point.
+- `index.css`: Global styles using modern CSS features.
