@@ -48,7 +48,6 @@ You can use the `.env.example` file as a template.
 - **@google/generative-ai**: Interface with Google Gemini models for quiz generation.
 - **Multer**: Middleware for handling `multipart/form-data` (file uploads).
 - **pdf-parse**: Extracts text from PDF files.
-- **Tesseract.js**: OCR support for image-based PDFs (if implemented).
 
 ## 📁 Source Code Overview
 - `src/server.js`: Entry point of the application.
