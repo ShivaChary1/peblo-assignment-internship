@@ -17,7 +17,11 @@ const runOCR = async (filePath) => {
 
   const data = new Uint8Array(await fs.promises.readFile(filePath));
 
-  const pdf = await pdfjsLib.getDocument({ data }).promise;
+  const pdf = await pdfjsLib.getDocument({
+    data,
+    standardFontDataUrl: path.join(__dirname, "../../node_modules/pdfjs-dist/standard_fonts/"),
+    disableFontFace: true
+  }).promise;
 
   const imagePaths = [];
 
@@ -74,3 +78,80 @@ const extractTextFromPDF = async (filePath) => {
 };
 
 module.exports = { extractTextFromPDF };
+
+
+// const fs = require("fs");
+// const pdfParse = require("pdf-parse");
+// const pdfjsLib = require("pdfjs-dist/legacy/build/pdf");
+// const { createCanvas } = require("canvas");
+// const tesseract = require("node-tesseract-ocr");
+
+// const OCR_CONFIG = {
+//   lang: "eng",
+//   oem: 1,
+//   psm: 3
+// };
+
+// const runOCR = async (filePath) => {
+
+//   console.log("Running OCR fallback...");
+
+//   const data = new Uint8Array(await fs.promises.readFile(filePath));
+
+//   const pdf = await pdfjsLib.getDocument({ data }).promise;
+
+//   let fullText = "";
+
+//   for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+
+//     const page = await pdf.getPage(pageNum);
+
+//     const viewport = page.getViewport({ scale: 3 });
+
+//     const canvas = createCanvas(viewport.width, viewport.height);
+//     const context = canvas.getContext("2d");
+
+//     await page.render({
+//       canvasContext: context,
+//       viewport
+//     }).promise;
+
+//     // convert canvas directly to buffer
+//     const buffer = canvas.toBuffer("image/png");
+
+//     // run OCR directly on buffer
+//     const text = await tesseract.recognize(buffer, OCR_CONFIG);
+
+//     fullText += text + "\n";
+//   }
+
+//   return fullText;
+// };
+
+
+// const extractTextFromPDF = async (filePath) => {
+
+//   const dataBuffer = await fs.promises.readFile(filePath);
+
+//   try {
+
+//     const pdfData = await pdfParse(dataBuffer);
+
+//     if (pdfData.text && pdfData.text.trim().length > 30) {
+
+//       console.log("Parsed using pdf-parse");
+
+//       return pdfData.text;
+//     }
+
+//     return await runOCR(filePath);
+
+//   } catch (error) {
+
+//     console.log("pdf-parse failed → using OCR");
+
+//     return await runOCR(filePath);
+//   }
+// };
+
+// module.exports = { extractTextFromPDF };
