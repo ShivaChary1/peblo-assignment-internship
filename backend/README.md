@@ -36,11 +36,9 @@ You can use the `.env.example` file as a template.
 - `POST /api/generate-quiz` - Generate a quiz based on an ingested source ID.
 
 ### Quiz Management
-- `GET /api/quizzes/:id` - Fetch a specific quiz.
+- `GET /api/quiz` - Fetch questions for a quiz.
 - `POST /api/submit-answer` - Submit a student's answer and get feedback.
 
-### Student Progress
-- `GET /api/students/:id/quizzes` - Get quiz history for a specific student.
 
 ## 🧠 Key Technologies
 - **Express.js**: Web framework for Node.js.
